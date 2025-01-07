@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+#credentials
+gcp_service_key.json
+
+#data
+indicator_data.csv
