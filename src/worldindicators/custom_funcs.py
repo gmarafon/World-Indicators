@@ -267,7 +267,7 @@ def export_bq_table_to_gdrive(dataset_table, destination_uri_path, project_id):
     # Convert dataframe to CSV
     print("Converting to CSV...")
     # csv_buffer = StringIO()
-    csv = df.to_csv(index=False)
+    csv = df.to_csv(index=False, sep=";")
 
     # access the drive
     print("Accessing Google Drive...")
