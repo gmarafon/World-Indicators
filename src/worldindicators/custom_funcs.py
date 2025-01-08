@@ -6,6 +6,9 @@ import os
 from time import time
 from worldindicators.config import data_dir
 import pickle
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+from oauth2client.service_account import ServiceAccountCredentials
 
 from dotenv import load_dotenv
 
@@ -14,7 +17,8 @@ load_dotenv()  # take environment variables from .env.
 # API documentation URL
 # https://datacatalog.worldbank.org/search/dataset/0037798/Global-Economic-Monitor
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./gcp_service_key.json"
+# Set the environment variable for the Google Cloud service account key
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GCP_SERVICE_KEY")
 
 project_id = os.getenv("GCP_PROJECT_ID")
 
@@ -226,10 +230,66 @@ def append_to_bigquery(df, project_id, dataset_id, table_id):
         print(f"Error uploading to BigQuery: {str(e)}")
 
 
-"""
-df = wb.data.DataFrame("IC.REG.DURS", time=range(2010, 2020), labels=True)
-upload_to_bigquery(df, "world-indicators-447017", "raw_world_bank", "IC_REG_DURS")
+@timer_function
+def export_bq_table_to_gdrive(dataset_table, destination_uri_path, project_id):
+    """
+    Export a BigQuery table to Google Drive as a CSV file.
 
-df2 = wb.data.DataFrame("FR.INR.RINR", time=range(2010, 2020), labels=True)
-upload_to_bigquery(df, "world-indicators-447017", "raw_world_bank", "FR_INR_RINR")
-"""
+    Parameters:
+    dataset_table: The dataset and table ID in BigQuery. Ex: 'my_dataset.my_table'
+    destination_uri_path (str): The Google Drive destination URI
+    project_id (str): Your Google Cloud project ID
+    """
+
+    # Initialize BigQuery client
+    client = bigquery.Client(project=project_id)
+
+    # defining the complete table reference
+    table_ref = "{project_id}.{dataset_table}".format(
+        project_id=project_id, dataset_table=dataset_table
+    )
+
+    # replacing for the filename in Google Drive
+    dataset_table_replaced = dataset_table.replace(".", "_")
+
+    sql = """
+
+    SELECT *
+
+    FROM `{}` 
+
+    """.format(table_ref)
+
+    # Execute query and get results as dataframe
+    print("Executing BigQuery query...")
+    df = client.query(sql).to_dataframe()
+
+    # Convert dataframe to CSV
+    print("Converting to CSV...")
+    # csv_buffer = StringIO()
+    csv = df.to_csv(index=False)
+
+    # access the drive
+    print("Accessing Google Drive...")
+    gauth = GoogleAuth()
+    scope = ["https://www.googleapis.com/auth/drive"]
+    gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"], scope
+    )
+    drive = GoogleDrive(gauth)
+
+    # Create file object
+    file_drive = drive.CreateFile(
+        {
+            "title": dataset_table_replaced,
+            "parents": [{"id": "15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y"}],
+            "mimeType": "text/csv",
+        }
+    )
+
+    # Set content and upload
+    print("Uploading to Google Drive...")
+    file_drive.SetContentString(csv)
+    file_drive.Upload()
+
+    print(f"File uploaded successfully. File ID: {file_drive['id']}")

@@ -2,6 +2,8 @@ from pathlib import Path  # pathlib is seriously awesome!
 
 
 data_dir = Path("c:/Users/gfmar/OneDrive/Projects/World Indicators/data")
+gdrive_dir = "15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y"
+
 # data_path = data_dir / "my_file.csv"  # use feather files if possible!!!
 
 # customer_db_url = "sql:///customer/db/url"
