@@ -237,7 +237,7 @@ def export_bq_table_to_gdrive(dataset_table, destination_uri_path, project_id):
 
     Parameters:
     dataset_table: The dataset and table ID in BigQuery. Ex: 'my_dataset.my_table'
-    destination_uri_path (str): The Google Drive destination URI
+    destination_uri_path (str): The Google Drive folder ID
     project_id (str): Your Google Cloud project ID
     """
 
@@ -281,8 +281,8 @@ def export_bq_table_to_gdrive(dataset_table, destination_uri_path, project_id):
     # Create file object
     file_drive = drive.CreateFile(
         {
-            "title": dataset_table_replaced,
-            "parents": [{"id": "15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y"}],
+            "title": "{}.csv".format(dataset_table_replaced),
+            "parents": [{"id": destination_uri_path}],
             "mimeType": "text/csv",
         }
     )

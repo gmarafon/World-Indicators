@@ -23,7 +23,7 @@ tables_list = [
 
 # Iterate over the list of tables and export them to Google Drive
 for table in tables_list:
-    print(tables_list)
+    print(f"Exporting table {table} to Google Drive...")
 
     export_bq_table_to_gdrive(
         dataset_table=table,
