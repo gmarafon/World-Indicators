@@ -1,8 +1,8 @@
 SELECT
-  `Country`,
-  `Economy` as `Economy ID`,
-  `Series`,
-  `Series ID`,
+  `Country` as `country`,
+  `Economy` as `economy_id`,
+  `Series` as `series`,
+  `Series ID` as `series_id` ,
   `YR2014` as `2014`,
   `YR2015` as `2015`,
   `YR2016` as `2016`,
@@ -14,4 +14,4 @@ SELECT
   `YR2022` as `2022`,
   `YR2023` as `2023`
 FROM
-  `world-indicators-447017.dbt_world_indicators.src_world_indicators`
+  {{ source('world_indicators', 'world_bank_data') }}

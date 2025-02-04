@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_world_indicators
+    description: Staged data from world indicators
+    columns: 
+      - name: economy
+        description: Abreviation of the Country/Economy
+        data_type: string 
+      - name: series_id
+        description: ID of the indicator
+        data_type: string 
+      - name: country
+        description: Country Name
+        data_type: string 
+      - name: series
+        description: Description of the indicator
+        data_type: string 
