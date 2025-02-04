@@ -41,8 +41,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   world_indicators:
     # Applies to all files under models/example/
-    source:
-      +materialized: table
     staging:
       +materialized: view
     marts:
