@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.25.0114.1153                               -->
+<workbook original-version='18.1' source-build='2024.3.3 (20243.25.0114.1153)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='dbt_world_indicators_marts_fact_world_indicators.csv+ (Multiple Connections)' inline='true' name='federated.0ms0mev0vhknxx14yggaw07l98bd' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='dbt_world_indicators_marts_fact_world_indicators' name='cloudfile:googledrive-textscan.1cjab4p0tccuhx189hg480v932tx'>
+            <connection class='cloudfile:googledrive-textscan' cloudFileExtension='csv' cloudFileId='1f-vRzgJ3WzJEA303-oIDwGoxo2xy9CTb' cloudFileMetadata_-_folder='15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y' cloudFileName='dbt_world_indicators_marts_fact_world_indicators.csv' cloudFileProvider='googledrive' cloudFileRequestURL='https://www.googleapis.com/drive/v3/files/1f-vRzgJ3WzJEA303-oIDwGoxo2xy9CTb?alt=media' filename='dbt_world_indicators_marts_fact_world_indicators.csv' server='' server-oauth='' username='gfmarafon@gmail.com' />
+          </named-connection>
+          <named-connection caption='dbt_world_indicators_marts_dimension_series' name='cloudfile:googledrive-textscan.1slq9f11i0m00018dn2ai15ucjzb'>
+            <connection class='cloudfile:googledrive-textscan' cloudFileExtension='csv' cloudFileId='1HeUqHY_XnXW9g0lFvGkBnD6lfBOMOo_1' cloudFileMetadata_-_folder='15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y' cloudFileName='dbt_world_indicators_marts_dimension_series.csv' cloudFileProvider='googledrive' cloudFileRequestURL='https://www.googleapis.com/drive/v3/files/1HeUqHY_XnXW9g0lFvGkBnD6lfBOMOo_1?alt=media' filename='dbt_world_indicators_marts_dimension_series.csv' server='' server-oauth='' username='gfmarafon@gmail.com' />
+          </named-connection>
+          <named-connection caption='dbt_world_indicators_marts_dimension_countries' name='cloudfile:googledrive-textscan.0zklunl1nulx991cu3fn814pwgxr'>
+            <connection class='cloudfile:googledrive-textscan' cloudFileExtension='csv' cloudFileId='1JCWuM-ZQiUQd3_troHp9ke8fIUsoXaXi' cloudFileMetadata_-_folder='15x7ve7m3U2gUq-MmHBdT2M250zhGNv_Y' cloudFileName='dbt_world_indicators_marts_dimension_countries.csv' cloudFileProvider='googledrive' cloudFileRequestURL='https://www.googleapis.com/drive/v3/files/1JCWuM-ZQiUQd3_troHp9ke8fIUsoXaXi?alt=media' filename='dbt_world_indicators_marts_dimension_countries.csv' server='' server-oauth='' username='gfmarafon@gmail.com' />
+          </named-connection>
+        </named-connections>
+      </connection>
+      <aliases enabled='yes' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='false' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/gfmar/AppData/Local/Temp/TableauTemp/#TableauTemp_07ohufo0xpd7h810hjgt30ycpkwx.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='01/09/2025 05:39:48 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C' table='[Extract].[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C]' type='table' />
+            <relation name='dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150' table='[Extract].[dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150]' type='table' />
+            <relation name='dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3' table='[Extract].[dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3]' type='table' />
+          </relation>
+          <cols>
+            <map key='[Country]' value='[dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150].[Country]' />
+            <map key='[Economy ID (dbt_world_indicators_marts_dimension_countries.csv)]' value='[dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150].[Economy ID]' />
+            <map key='[Economy ID]' value='[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C].[Economy ID]' />
+            <map key='[Series ID (dbt_world_indicators_marts_dimension_series.csv)]' value='[dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3].[Series ID]' />
+            <map key='[Series ID]' value='[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C].[Series ID]' />
+            <map key='[Series]' value='[dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3].[Series]' />
+            <map key='[Value]' value='[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C].[Value]' />
+            <map key='[Year]' value='[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C].[Year]' />
+          </cols>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Brazil&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='dbt_world_indicators_marts_dimension_countries.csv' id='dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150'>
+            <properties context='extract'>
+              <relation name='dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150' table='[Extract].[dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150]' type='table' />
+            </properties>
+          </object>
+          <object caption='dbt_world_indicators_marts_dimension_series.csv' id='dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3'>
+            <properties context='extract'>
+              <relation name='dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3' table='[Extract].[dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3]' type='table' />
+            </properties>
+          </object>
+          <object caption='dbt_world_indicators_marts_fact_world_indicators.csv' id='dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C'>
+            <properties context='extract'>
+              <relation name='dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C' table='[Extract].[dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Economy ID]' />
+              <expression op='[Economy ID (dbt_world_indicators_marts_dimension_countries.csv)]' />
+            </expression>
+            <first-end-point object-id='dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C' />
+            <second-end-point object-id='dbt_world_indicators_marts_dimension_countries.csv_9258EA96A8DD47F8B30B2F7815E1A150' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Series ID]' />
+              <expression op='[Series ID (dbt_world_indicators_marts_dimension_series.csv)]' />
+            </expression>
+            <first-end-point object-id='dbt_world_indicators_marts_fact_world_indicators.csv_6648310D045241A8BB46C7A05BFCE23C' />
+            <second-end-point object-id='dbt_world_indicators_marts_dimension_series.csv_8BC32F0C64AB4B99B8D02C062F7CC8D3' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D72FD1CC-9C27-4B6C-9DAF-C62D6F185D08}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8ADDA883-FAF1-42A6-B7BF-013846278596}' />
+    </window>
+  </windows>
+</workbook>

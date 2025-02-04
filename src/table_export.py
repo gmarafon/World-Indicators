@@ -1,6 +1,6 @@
 # export the tables from Bigquery to Google Drive
 
-from google.cloud import bigquery
+# from google.cloud import bigquery
 from dotenv import load_dotenv
 import os
 from worldindicators.config import gdrive_dir
@@ -15,9 +15,9 @@ project_id = os.getenv(
 
 # Define the tables to export
 tables_list = [
-    "dbt_world_indicators.marts_dimension_series",
-    "dbt_world_indicators.marts_dimension_countries",
-    "dbt_world_indicators.marts_fact_world_indicators",
+    "dbt_prod.marts_dimension_series",
+    "dbt_prod.marts_dimension_countries",
+    "dbt_prod.marts_fact_world_indicators",
 ]
 
 
