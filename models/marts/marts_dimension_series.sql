@@ -1,7 +1,5 @@
-{{ config(materialized='table') }}
-
 SELECT DISTINCT
-  `Series`,
-  `Series ID`
+  `series`,
+  `series_id`
 FROM
-  `world-indicators-447017.dbt_world_indicators.src_world_indicators`
+  {{ ref('marts_fact_world_indicators') }}

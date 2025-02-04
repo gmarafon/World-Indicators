@@ -1,0 +1,19 @@
+version: 2
+
+exposures:
+
+  - name: world_indicators_dashboard
+    label: world_indicators_data
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Dashboard of the indicators from World Bank Open Data on Tableau Public
+
+    depends_on:
+      - ref('marts_fact_world_indicators')
+      - ref('marts_dimension_countries')
+      - ref('marts_dimension_series')
+
+    owner:
+      name: Gabriel Marafon

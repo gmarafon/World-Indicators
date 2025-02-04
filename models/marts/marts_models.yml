@@ -1,0 +1,85 @@
+models:
+  - name: marts_fact_world_indicators
+    description: Fact table with the years pivoted and the measurement unities classified
+    config:
+      contract:
+        enforced: true
+    columns: 
+      - name: economy_id
+        description: Abreviation of the Country/Economy
+        data_type: string 
+        tests:
+          - not_null 
+
+      - name: series_id
+        description: ID of the indicator
+        data_type: string
+        tests:
+          - not_null 
+
+      - name: country
+        description: Country Name
+        data_type: string
+        tests:
+          - not_null 
+
+      - name: series
+        description: Description of the indicator
+        data_type: string
+        tests:
+          - not_null 
+
+      - name: unity_category
+        description: Classification of the unity of the indicator. This is hard coded, not provided
+        data_type: string 
+        tests:
+          - not_null 
+
+      - name: year
+        description: Year of that the indicator refers to
+        data_type: integer 
+
+      - name: value
+        description: Value of the indicator
+        data_type: float  
+
+
+  - name: marts_dimension_countries
+    description: Dimensions table containing countries and it's ID
+    config:
+      contract:
+        enforced: true
+    columns: 
+      - name: economy_id
+        description: Abreviation of the Country/Economy. Used as key to marts_fact_world_indicators
+        data_type: string
+        tests:
+          - unique
+          - not_null 
+
+      - name: country
+        description: Country Name
+        data_type: string 
+        tests:
+          - not_null 
+
+
+  - name: marts_dimension_series
+    description: Dimensions table containing series indicators and it's IDs
+    config:
+      contract:
+        enforced: true
+    columns: 
+      - name: series_id
+        description: ID of the indicator. Used as key to marts_fact_world_indicators
+        data_type: string
+        tests:
+          - unique
+          - not_null 
+
+      - name: series
+        description: Description of the indicator
+        data_type: string 
+        tests:
+          - not_null 
+    

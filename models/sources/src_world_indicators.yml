@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: world_indicators
+    description: Connectiong to the extracted data from world indicators. For more information, access https://datahelpdesk.worldbank.org/knowledgebase/topics/125589
+    database: world-indicators-447017
+    schema: raw_data
+    tables:
+      - name: world_bank_data
+        description: Raw table containing all indicators
